@@ -20,6 +20,19 @@ Node *new_binary(TokenType op, Node *left, Node *right) {
     return n;
 }
 
+Node *new_unary(TokenType op, Node *operand) {
+    Node *n = alloc_node(NODE_UNARY);
+    n->as.unary.op = op;
+    n->as.unary.operand = operand;
+    return n;
+}
+
+Node *new_number(double value) {
+    Node *n = alloc_node(NODE_NUMBER);
+    n->as.number = value;
+    return n;
+}
+
 void free_node(Node *n) {
     if (n == NULL) return;
     
